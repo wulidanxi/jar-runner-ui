@@ -1,0 +1,87 @@
+{
+  "name": "jar-runner",
+  "private": true,
+  "version": "1.0.2",
+  "description": "一个用于运行 JAR 包的 Electron 客户端",
+  "main": "main.js",
+  "scripts": {
+    "dev": "cross-env npm_config_loglevel=error vite",
+    "build": "cross-env npm_config_loglevel=error tsc && vite build",
+    "electron:dev": "cross-env NODE_ENV=development electron .",
+    "electron:start": "cross-env NODE_ENV=production electron .",
+    "electron:build": "npm run build && node scripts/generate-icon2.js && electron-builder",
+    "electron:build:mac": "npm run build && electron-builder --mac dmg zip",
+    "start": "npm run build && npm run electron:start",
+    "start:dev": "concurrently -k -r \"vite\" \"wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .\"",
+    "gen:icon": "node scripts/generate-icon2.js"
+  },
+  "author": "wulidanxi@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "antd": "^5.24.6",
+    "electron-is-dev": "^2.0.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-window": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^40.0.0",
+    "electron-builder": "^24.9.1",
+    
+    "pngjs": "^7.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^7.3.1",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.jar.runner",
+    "icon": "assets/icon.ico",
+    "asar": true,
+    "compression": "maximum",
+    "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
+    "copyright": "Copyright © 2026 wulidanxi@gmail.com",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "hardenedRuntime": true,
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.inherit.plist",
+      "gatekeeperAssess": false,
+      "icon": "assets/icon.png",
+      "target": [
+        { "target": "dmg", "arch": ["x64", "arm64"] },
+        { "target": "zip", "arch": ["x64", "arm64"] }
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "publisherName": "wulidanxi@gmail.com"
+    },
+    "nsis": {
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "differentialPackage": false,
+      "menuCategory": true
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "assets/icon.png",
+      "!**/*.map",
+      "!**/*.md",
+      "!**/CHANGELOG*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    }
+  }
+}

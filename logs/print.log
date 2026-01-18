@@ -1,0 +1,14 @@
+[2025-04-09 20:51:57.229] [INFO ] main.java.PropertiesRead.main(PropertiesRead.java:484) main.java.PropertiesRead - 
+   ___        _         _            _                _         
+  / _ \ _ __ (_) _ __  | |_   _ __  | | _   _   __ _ (_) _ __   
+ / /_)/| '__|| || '_ \ | __| | '_ \ | || | | | / _` || || '_ \  
+/ ___/ | |   | || | | || |_  | |_) || || |_| || (_| || || | | | 
+\/     |_|   |_||_| |_| \__| | .__/ |_| \__,_| \__, ||_||_| |_| 
+          _        ___       |_|               |___/            
+ /\   /\ / |      / _ \                                         
+ \ \ / / | |     | | | |                                        
+  \ V /  | |  _  | |_| |                                        
+   \_/   |_| (_)  \___/                                         
+                                                                
+
+[2025-04-09 20:51:57.233] [INFO ] main.java.PropertiesRead.main(PropertiesRead.java:485) main.java.PropertiesRead - D:\Study\printPlugin\jdbc_connection.properties
